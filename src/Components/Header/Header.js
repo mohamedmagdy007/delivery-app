@@ -1,27 +1,29 @@
-import React from "react";
-import { Container } from "reactstrap";
-import logo from "../../assets/images/res-logo.png";
-import { NavLink, Link } from "react-router-dom";
-import "../styles/header.css";
+import React, { useRef } from 'react';
+import { Container } from 'reactstrap';
+import logo from '../../assets/images/res-logo.png';
+import { NavLink, Link } from 'react-router-dom';
+import '../styles/header.css';
 const Nav__links = [
   {
-    display: "home",
-    path: "/home",
+    display: 'home',
+    path: '/home',
   },
   {
-    display: "Foods",
-    path: "/foods",
+    display: 'Foods',
+    path: '/foods',
   },
   {
-    display: "Cart",
-    path: "/cart",
+    display: 'Cart',
+    path: '/cart',
   },
   {
-    display: "Content",
-    path: "/content",
+    display: 'Contact',
+    path: '/contact',
   },
 ];
 const Header = () => {
+  const menuRef = useRef(null);
+  const toggleMenu = () => menuRef.current.classList.toggle('show__menu');
   return (
     <header className="header">
       <Container>
@@ -30,14 +32,14 @@ const Header = () => {
             <img src={logo} alt="logo" />
             <h5>Testy Treeat</h5>
           </div>
-          <div className="navigation">
+          <div className="navigation" ref={menuRef} onClick={toggleMenu}>
             <div className="menu  d-flex align-items-center gap-5">
               {Nav__links.map((items, index) => (
                 <NavLink
                   key={index}
                   to={items.path}
                   className={(navClass) =>
-                    navClass.isActive ? "active__menu" : ""
+                    navClass.isActive ? 'active__menu' : ''
                   }
                 >
                   {items.display}
@@ -55,7 +57,7 @@ const Header = () => {
                 <i className="ri-user-line"></i>
               </Link>
             </span>
-            <span className="moblie__menu">
+            <span className="moblie__menu" onClick={toggleMenu}>
               <i className="ri-menu-line"></i>
             </span>
           </div>
