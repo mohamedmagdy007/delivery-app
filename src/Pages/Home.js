@@ -1,37 +1,64 @@
-import React from 'react';
-import Helmet from '../Components/Helmet/Helmet';
-import { Container, Row, Col } from 'reactstrap';
-import heroImg from '../assets/images/hero.png';
-import '../Components/styles/hero-section.css';
-import { Link } from 'react-router-dom';
-import Category from '../Components/UI/category/category';
-import '../Components/styles/home.css';
-import featureImg01 from '../assets/images/service-01.png';
-import featureImg02 from '../assets/images/service-02.png';
-import featureImg03 from '../assets/images/service-03.png';
-import products from '../assets/fake-data/products';
-import foodCategoryImg01 from '../assets/images/hamburger.png';
-import foodCategoryImg02 from '../assets/images/pizza.png';
-import foodCategoryImg03 from '../assets/images/bread.png';
-import ProductCard from '../Components/UI/product-card/ProductCard';
+import React, { useEffect, useState } from "react";
+import Helmet from "../Components/Helmet/Helmet";
+import { Container, Row, Col } from "reactstrap";
+import heroImg from "../assets/images/hero.png";
+import "../Components/styles/hero-section.css";
+import { Link } from "react-router-dom";
+import Category from "../Components/UI/category/category";
+import "../Components/styles/home.css";
+import featureImg01 from "../assets/images/service-01.png";
+import featureImg02 from "../assets/images/service-02.png";
+import featureImg03 from "../assets/images/service-03.png";
+import products from "../assets/fake-data/products";
+import foodCategoryImg01 from "../assets/images/hamburger.png";
+import foodCategoryImg02 from "../assets/images/pizza.png";
+import foodCategoryImg03 from "../assets/images/bread.png";
+import ProductCard from "../Components/UI/product-card/ProductCard";
 const featureData = [
   {
-    title: 'Quick Delivery',
+    title: "Quick Delivery",
     imgUrl: featureImg01,
-    desc: ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. amet consectetur',
+    desc: " Lorem ipsum dolor, sit amet consectetur adipisicing elit. amet consectetur",
   },
   {
-    title: 'Super Dine In',
+    title: "Super Dine In",
     imgUrl: featureImg02,
-    desc: ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. amet consectetur',
+    desc: " Lorem ipsum dolor, sit amet consectetur adipisicing elit. amet consectetur",
   },
   {
-    title: 'Easy Pick Up',
+    title: "Easy Pick Up",
     imgUrl: featureImg03,
-    desc: ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. amet consectetur',
+    desc: " Lorem ipsum dolor, sit amet consectetur adipisicing elit. amet consectetur",
   },
 ];
 const Home = () => {
+  const [category, setCategory] = useState("All");
+
+  const [allProduct, setAllProduct] = useState(products);
+  useEffect(() => {
+    if (category === "All") {
+      setAllProduct(products);
+    }
+    if (category === "BURGER") {
+      const fiteredProducts = products.filter(
+        (item) => item.category === "Burger"
+      );
+      setAllProduct(fiteredProducts);
+    }
+    if (category === "PIZZA") {
+      const fiteredProducts = products.filter(
+        (item) => item.category === "Pizza"
+      );
+      setAllProduct(fiteredProducts);
+    }
+    if (category === "BREAD") {
+      const fiteredProducts = products.filter(
+        (item) => item.category === "Bread"
+      );
+      setAllProduct(fiteredProducts);
+    }
+  }, [category]);
+
   return (
     <Helmet title="Home">
       <section>
@@ -123,22 +150,44 @@ const Home = () => {
             </Col>
             <Col lg="12">
               <div className="food__category d-flex align-items-center justify-content-center gap-4">
-                <button className="all__Foods foodBtnActive">All</button>
-                <button className="d-flex align-items-center gap-2">
+                <button
+                  className={`all__Foods ${
+                    category === "All" ? "foodBtnActive" : ""
+                  }`}
+                  onClick={() => setCategory("All")}
+                >
+                  All
+                </button>
+                <button
+                  className={`d-flex align-items-center gap-2 ${
+                    category === "BURGER" ? "foodBtnActive" : ""
+                  }`}
+                  onClick={() => setCategory("BURGER")}
+                >
                   <img src={foodCategoryImg01} alt="" />
                   Burger
                 </button>
-                <button className="d-flex align-items-center gap-2">
+                <button
+                  className={`d-flex align-items-center gap-2 ${
+                    category === "PIZZA" ? "foodBtnActive" : ""
+                  }`}
+                  onClick={() => setCategory("PIZZA")}
+                >
                   <img src={foodCategoryImg02} alt="" />
                   Pizza
                 </button>
-                <button className="d-flex align-items-center gap-2">
+                <button
+                  className={`d-flex align-items-center gap-2 ${
+                    category === "BREAD" ? "foodBtnActive" : ""
+                  }`}
+                  onClick={() => setCategory("BREAD")}
+                >
                   <img src={foodCategoryImg03} alt="" />
                   Bread
                 </button>
               </div>
             </Col>
-            {products.map((item, index) => (
+            {allProduct.map((item, index) => (
               <Col lg="3" md="4" key={index} className="mt-5">
                 <ProductCard item={item} />
               </Col>
