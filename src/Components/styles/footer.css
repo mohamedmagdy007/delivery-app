@@ -53,7 +53,7 @@
 }
 .newsletter span {
   background: #df2020;
-  padding: 5px 30px;
+  padding: 5px 24px;
   border-radius: 5px;
 }
 .newsletter span i {
@@ -68,4 +68,39 @@
 .copyright__text {
   font-size: 0.8rem;
   color: #df2020;
+}
+@media screen and (max-width: 1200px) {
+  .newsletter {
+    padding: 7px;
+    font-size: 0.7rem;
+  }
+  .newsletter span {
+    padding: 4px 20px;
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .footer__title {
+    font-size: 0.8rem;
+  }
+  .delivery__time-item span {
+    font-size: 0.8rem;
+  }
+  .delivery__time-item p {
+    font-size: 0.7rem;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .social__links {
+    justify-content: center;
+  }
+  .social__links p {
+    font-size: 0.8rem;
+  }
+  .social__links span {
+    padding: 4px;
+  }
+  .social__links span a {
+    font-size: 0.7rem;
+  }
 }

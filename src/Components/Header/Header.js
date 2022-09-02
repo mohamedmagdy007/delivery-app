@@ -1,31 +1,52 @@
-import React, { useRef } from 'react';
-import { Container } from 'reactstrap';
-import logo from '../../assets/images/res-logo.png';
-import { NavLink, Link } from 'react-router-dom';
-import '../styles/header.css';
+import React, { useRef, useEffect } from "react";
+import { Container } from "reactstrap";
+import logo from "../../assets/images/res-logo.png";
+import { NavLink, Link } from "react-router-dom";
+import "../styles/header.css";
+import { useSelector, useDispatch } from "react-redux";
+import { cartUiActions } from "../../store/shopping-cart/cartUiSlice";
 const Nav__links = [
   {
-    display: 'home',
-    path: '/home',
+    display: "home",
+    path: "/home",
   },
   {
-    display: 'Foods',
-    path: '/foods',
+    display: "Foods",
+    path: "/foods",
   },
   {
-    display: 'Cart',
-    path: '/cart',
+    display: "Cart",
+    path: "/cart",
   },
   {
-    display: 'Contact',
-    path: '/contact',
+    display: "Contact",
+    path: "/contact",
   },
 ];
 const Header = () => {
   const menuRef = useRef(null);
-  const toggleMenu = () => menuRef.current.classList.toggle('show__menu');
+  const headerRef = useRef(null);
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const dispatch = useDispatch();
+  const toogleCart = () => {
+    dispatch(cartUiActions.toggle());
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("header__shrink");
+      } else {
+        headerRef.current.classList.remove("header__shrink");
+      }
+    });
+    // return () => window.removeEventListener("scroll");
+  }, []);
+  const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
   return (
-    <header className="header">
+    <header className="header " ref={headerRef}>
       <Container>
         <div className="nav__wrapper d-flex align-items-center justify-content-between">
           <div className="logo">
@@ -39,7 +60,7 @@ const Header = () => {
                   key={index}
                   to={items.path}
                   className={(navClass) =>
-                    navClass.isActive ? 'active__menu' : ''
+                    navClass.isActive ? "active__menu" : ""
                   }
                 >
                   {items.display}
@@ -48,9 +69,9 @@ const Header = () => {
             </div>
           </div>
           <div className="nav_right d-flex align-items-center gap-3">
-            <span className="cart__icon">
+            <span className="cart__icon" onClick={toogleCart}>
               <i className="ri-shopping-basket-line"></i>
-              <span className="cart__badge">2</span>
+              <span className="cart__badge">{totalQuantity}</span>
             </span>
             <span className="user">
               <Link to="/login">
