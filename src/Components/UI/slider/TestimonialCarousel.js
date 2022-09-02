@@ -1,4 +1,6 @@
 import React from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import Slider from 'react-slick';
 import { Container } from 'reactstrap';
 import ava01 from '../../../assets/images/ava-1.jpg';
@@ -26,7 +28,7 @@ const TestimonialCarousel = () => {
           deserunt, vero vitae? Odit!
         </p>
         <div className="d-flex align-items-center gap-2">
-          <img src={ava01} alt="ava01" className="rounded w-25" />
+          <LazyLoadImage src={ava01} alt="ava01" className="rounded w-25" effect='blur'/>
           <h6>Jhon Doe</h6>
         </div>
       </div>
@@ -38,7 +40,7 @@ const TestimonialCarousel = () => {
           deserunt, vero vitae? Odit!
         </p>
         <div className="d-flex align-items-center gap-2">
-          <img src={ava02} alt="ava01" className="rounded w-25" />
+          <LazyLoadImage src={ava02} alt="ava01" className="rounded w-25" effect='blur'/>
           <h6>Mitchell Marsh</h6>
         </div>
       </div>
@@ -50,7 +52,7 @@ const TestimonialCarousel = () => {
           deserunt, vero vitae? Odit!
         </p>
         <div className="d-flex align-items-center gap-2">
-          <img src={ava03} alt="ava01" className="rounded w-25" />
+          <LazyLoadImage src={ava03} alt="ava01" className="rounded w-25" effect='blur'/>
           <h6>Steven Doe</h6>
         </div>
       </div>

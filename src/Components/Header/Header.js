@@ -5,6 +5,8 @@ import { NavLink, Link } from "react-router-dom";
 import "../styles/header.css";
 import { useSelector, useDispatch } from "react-redux";
 import { cartUiActions } from "../../store/shopping-cart/cartUiSlice";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 const Nav__links = [
   {
     display: "home",
@@ -50,7 +52,7 @@ const Header = () => {
       <Container>
         <div className="nav__wrapper d-flex align-items-center justify-content-between">
           <div className="logo">
-            <img src={logo} alt="logo" />
+            <LazyLoadImage src={logo} alt="logo" effect="blur" />
             <h5>Testy Treeat</h5>
           </div>
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>

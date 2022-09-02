@@ -1,4 +1,6 @@
 import React from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Container, Row, Col } from 'reactstrap';
 import categoryImg1 from '../../../assets/images/category-01.png';
 import categoryImg2 from '../../../assets/images/category-02.png';
@@ -32,7 +34,7 @@ const category = () => {
           <Col lg="3" md="4" sm="6" xs="6" className="mb-4" key={index}>
             <div className="category__item d-flex align-items-center gap-3">
               <div className="category__img">
-                <img src={category.imgUrl} alt={category.display} />
+                <LazyLoadImage src={category.imgUrl} alt={category.display} effect='blur'/>
               </div>
               <h6>{category.display}</h6>
             </div>

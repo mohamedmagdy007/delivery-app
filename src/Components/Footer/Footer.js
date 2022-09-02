@@ -3,6 +3,8 @@ import logo from '../../assets/images/res-logo.png';
 import '../styles/footer.css';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 const Footer = () => {
   return (
     <footer className="footer">
@@ -10,7 +12,7 @@ const Footer = () => {
         <Row>
           <Col lg="3" md="4" sm="6">
             <div className="footer__logo text-start">
-              <img src={logo} alt="logo" />
+              <LazyLoadImage src={logo} alt="logo"  effect="blur"/>
               <h5>Testy Treeat</h5>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
