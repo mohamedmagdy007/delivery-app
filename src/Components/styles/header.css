@@ -42,19 +42,19 @@
 }
 .cart__badge {
   position: absolute;
-  top: 30px;
-  right: -10px;
+  top: 26px;
+  right: -11px;
   background: #df2020;
   color: #fff;
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 5;
+  line-height: 11px;
 }
 
 .moblie__menu {

@@ -9,7 +9,7 @@ import { cartUiActions } from "../../../store/shopping-cart/cartUiSlice";
 const Cart = () => {
   const dispatch = useDispatch();
   const cartProducts = useSelector((state) => state.cart.cartItems);
-  console.log(cartProducts);
+  const totalAmount = useSelector(state => state.cart.totalAmount);
   const toggleCart = () => {
     dispatch(cartUiActions.toggle());
   };
@@ -22,7 +22,7 @@ const Cart = () => {
           </span>
         </div>
         <div className="cart__item-list">
-          {cartProducts.length == 0 ? (
+          {cartProducts.length === 0 ? (
             <h6 className="text-center mt-5">No item added ti the cart</h6>
           ) : (
             cartProducts.map((item, index) => (
@@ -32,7 +32,7 @@ const Cart = () => {
         </div>
         <div className="cart__bottom d-flex align-items-center justify-content-between">
           <h6>
-            subtotal amount: <span>$123</span>
+            subtotal amount: <span>${totalAmount}</span>
           </h6>
           <button>
             <Link to="/checkout">Checkout</Link>
