@@ -127,4 +127,7 @@
   .logo h5 {
     margin-top: -55px;
   }
+  .cart__badge {
+    top: 17px;
+  }
 }

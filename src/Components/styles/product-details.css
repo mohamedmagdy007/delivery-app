@@ -29,6 +29,9 @@
 .tabs h6 {
   cursor: pointer;
 }
+.product__main-img {
+  box-shadow: 1px 1px 7px 0px #fde2e2;
+}
 .tab__content p {
   line-height: 30px;
   color: #212245b6;
@@ -41,6 +44,7 @@
 }
 .img__item img {
   cursor: pointer;
+  border: 2px solid #fde2e2;
 }
 .form {
   width: 60%;
@@ -71,4 +75,47 @@
 }
 .feedback__text {
   color: #212245b6;
+}
+@media only screen and (max-width: 767.9px) {
+  .product__image {
+    display: flex;
+    flex-direction: row;
+  }
+  .product__title {
+    font-size: 1.2rem;
+  }
+  .product__price,
+  .product__price span,
+  .category,
+  .category span {
+    font-size: 1rem;
+  }
+  .tabs {
+    margin-top: 30px;
+  }
+  .tab h6 {
+    font-size: 0.9rem;
+  }
+  .tab__content p,
+  .user__name,
+  .feedback__text,
+  .user__email {
+    font-size: 0.8rem;
+  }
+  .form {
+    width: 100%;
+    margin-top: 50px;
+  }
+  .form__group input::placeholder,
+  .form__group textarea::placeholder {
+    font-size: 0.8rem;
+  }
+  .related__product-title {
+    font-size: 1.2rem;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .product__main-img {
+    margin-bottom: 20px;
+  }
 }

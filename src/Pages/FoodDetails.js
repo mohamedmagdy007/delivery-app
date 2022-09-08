@@ -7,14 +7,33 @@ import { Container, Row, Col } from "reactstrap";
 import "../Components/styles/product-details.css";
 import ProductCard from "../Components/UI/product-card/ProductCard";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { cartAction } from "../store/shopping-cart/cartSlice";
+
 const FoodDetails = () => {
   const [tab, setTab] = useState("desc");
+  const [enteredName, setEnteredName] = useState("");
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [reviewMsg, setReviewMsg] = useState("");
   const { id } = useParams();
+  const dispatch = useDispatch();
   const product = products.find((product) => product.id === id);
   const [previewImg, setPreviewImg] = useState(product.image01);
-  const { title, price, category, desc } = product;
+  const { title, price, category, desc, image01 } = product;
   const relatedProduct = products.filter((item) => category === item.category);
-  
+  const addItem = () => {
+    dispatch(
+      cartAction.addItem({
+        id,
+        title,
+        price,
+        image01,
+      })
+    );
+  };
+  const submitHandler = (e) => {
+    e.preventDefault();
+  };
   useEffect(() => {
     setPreviewImg(product.image01);
   }, [product]);
@@ -60,7 +79,9 @@ const FoodDetails = () => {
                 <p className="category mb-5">
                   Categroy: <span>{category}</span>
                 </p>
-                <button className="addToCart__btn">Add to Cart</button>
+                <button className="addToCart__btn" onClick={addItem}>
+                  Add to Cart
+                </button>
               </div>
             </Col>
             <Col lg="12">
@@ -99,18 +120,30 @@ const FoodDetails = () => {
                     <p className="user__email mb-0">jhonDoe@email.com</p>
                     <p className="feedback__text">great product</p>
                   </div>
-                  <form className="form">
+                  <form className="form" onSubmit={submitHandler}>
                     <div className="form__group">
-                      <input type="text" placeholder="Enter your name" />
+                      <input
+                        type="text"
+                        placeholder="Enter your name"
+                        onChange={(e) => setEnteredName(e.target.value)}
+                        required
+                      />
                     </div>
                     <div className="form__group">
-                      <input type="text" placeholder="Enter your name" />
+                      <input
+                        type="text"
+                        placeholder="Enter your email"
+                        onChange={(e) => setEnteredEmail(e.target.value)}
+                        required
+                      />
                     </div>
                     <div className="form__group">
                       <textarea
                         type="text"
                         rows={5}
-                        placeholder="Enter your name"
+                        placeholder="Write your review"
+                        onChange={(e) => setReviewMsg(e.target.value)}
+                        required
                       />
                     </div>
                     <button type="submit" className="addToCart__btn">

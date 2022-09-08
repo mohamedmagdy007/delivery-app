@@ -19,8 +19,12 @@
   justify-content: center;
   cursor: pointer;
   margin: 5px;
-  transition: .3s;
+  transition: 0.3s;
 }
 .paginationBttns a:hover {
   background-color: #990606;
+}
+.paginationBttns .previous.disabled,
+.paginationBttns .next.disabled {
+  display: none;
 }
