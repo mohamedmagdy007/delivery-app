@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import "../Components/styles/cart-page.css";
 import { cartAction } from "../store/shopping-cart/cartSlice";
 import { Link } from "react-router-dom";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
@@ -79,7 +80,7 @@ const Tr = ({ item }) => {
   return (
     <tr>
       <td className="cart__img-box">
-        <img src={image01} alt={title} />
+        <LazyLoadImage src={image01} alt={title} effect="blur"/>
       </td>
       <td>{title}</td>
       <td>${price}</td>

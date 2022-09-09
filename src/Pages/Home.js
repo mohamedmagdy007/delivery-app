@@ -19,6 +19,7 @@ import networkImg from "../assets/images/network.png";
 import TestimonialCarousel from "../Components/UI/slider/TestimonialCarousel";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { useSelector } from "react-redux";
 const featureData = [
   {
     title: "Quick Delivery",
@@ -38,9 +39,10 @@ const featureData = [
 ];
 const Home = () => {
   const [category, setCategory] = useState("All");
-
+  const itemsWitched = useSelector((state) => state.cart.cartWitchItem);
   const [allProduct, setAllProduct] = useState(products);
   const [hotPizza, setHotPizza] = useState([]);
+
   useEffect(() => {
     const filteredPizza = products.filter((item) => item.category === "Pizza");
     const slicePizza = filteredPizza.slice(0, 4);
@@ -164,6 +166,26 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" className="text-center">
+              <h2>The last products you have seen</h2>
+            </Col>
+            {itemsWitched.length === 0 ? (
+              <h4 className="text-center">
+                You haven't seen any products recently
+              </h4>
+            ) : (
+              itemsWitched.map((items, index) => (
+                <Col lg="3" md="4" sm="6" xs="12" key={index} className="mt-5">
+                  <ProductCard item={items} />
+                </Col>
+              ))
+            )}
+          </Row>
+        </Container>
+      </section>
+      <section>
+        <Container>
+          <Row>
+            <Col lg="12" className="text-center">
               <h2>Popular Foods</h2>
             </Col>
             <Col lg="12">
@@ -225,6 +247,7 @@ const Home = () => {
           </Row>
         </Container>
       </section>
+
       <section className="why__choosse-us">
         <Container>
           <Row>

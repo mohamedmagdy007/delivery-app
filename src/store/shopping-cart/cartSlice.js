@@ -21,6 +21,7 @@ const initialState = {
   cartItems: items,
   totalQuantity: totalQuantity,
   totalAmount: totalAmount,
+  cartWitchItem: [],
 };
 
 const cartSlice = createSlice({
@@ -56,6 +57,26 @@ const cartSlice = createSlice({
         state.totalAmount,
         state.totalQuantity
       );
+    },
+    addWitchItem(state, action) {
+      const newWichItem = action.payload;
+      const existingItem = state.cartWitchItem.find(
+        (item) => item.id === newWichItem.id
+      );
+      if (!existingItem) {
+        state.cartWitchItem.push({
+          id: newWichItem.id,
+          title: newWichItem.title,
+          image01: newWichItem.image01,
+          price: newWichItem.price,
+          quantity: 1,
+          totalPrice: newWichItem.price,
+          witchItem: true,
+        });
+      }
+      if(state.cartWitchItem.length > 4){
+        state.cartWitchItem.shift();
+      }
     },
     removeItem(state, action) {
       const id = action.payload;

@@ -9,7 +9,8 @@ import ProductCard from "../Components/UI/product-card/ProductCard";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { cartAction } from "../store/shopping-cart/cartSlice";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 const FoodDetails = () => {
   const [tab, setTab] = useState("desc");
   const [enteredName, setEnteredName] = useState("");
@@ -49,25 +50,25 @@ const FoodDetails = () => {
                   className="img__item mb-2"
                   onClick={() => setPreviewImg(product.image01)}
                 >
-                  <img src={product.image01} alt="product" className="w-50" />
+                  <LazyLoadImage src={product.image01} alt="product" className="w-50"  effect="blur" />
                 </div>
                 <div
                   className="img__item  mb-2"
                   onClick={() => setPreviewImg(product.image02)}
                 >
-                  <img src={product.image02} alt="product" className="w-50" />
+                  <LazyLoadImage src={product.image02} alt="product" className="w-50"  effect="blur"/>
                 </div>
                 <div
                   className="img__item"
                   onClick={() => setPreviewImg(product.image03)}
                 >
-                  <img src={product.image03} alt="product" className="w-50" />
+                  <LazyLoadImage src={product.image03} alt="product" className="w-50"  effect="blur"/>
                 </div>
               </div>
             </Col>
             <Col lg={4} md={4}>
               <div className="product__main-img">
-                <img src={previewImg} alt="product" className="w-100" />
+                <LazyLoadImage src={previewImg} alt="product" className="w-100"  effect="blur"/>
               </div>
             </Col>
             <Col lg="6" md="6">
