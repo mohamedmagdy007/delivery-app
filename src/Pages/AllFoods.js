@@ -125,7 +125,7 @@ const AllFoods = () => {
               <h3 className="text-center mt-5">Not Found</h3>
             ) : (
               FallProducts.map((item) => (
-                <Col lg="3" md="4" sm="6" xs="6" className="mb-4" key={item.id}>
+                <Col lg="3" md="4" sm="12" xs="12" className="mb-4" key={item.id}>
                   <ProductCard item={item} />
                 </Col>
               ))
