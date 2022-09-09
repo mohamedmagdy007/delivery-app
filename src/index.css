@@ -9,6 +9,7 @@
   background: #df2020;
 }
 
+
 @import url("https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Istok+Web&display=swap");
 
@@ -50,6 +51,12 @@ h2 {
 
 section {
   padding: 60px 0px;
+}
+.link__sigin {
+  transition: 0.2s;
+}
+.link__sigin:hover {
+  color: #df2020;
 }
 @media only screen and (max-width: 768px) {
   section {

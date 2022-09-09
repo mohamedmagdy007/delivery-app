@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Helmet from "../Components/Helmet/Helmet";
 import { CommonSection } from "../Components/UI/common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
@@ -11,8 +11,8 @@ const AllFoods = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
   const [allProducts, setAllProducts] = useState(products);
-  const [FallProducts, setFAllProducts] = useState([]);
-  const [filter, setFilter] = useState("defualt");
+  const [FallProducts, setFAllProducts] = useState(allProducts);
+  const [filter, setFilter] = useState("");
   const productPerPage = 8;
   const visitedPage = pageNumber * productPerPage;
   useEffect(() => {
@@ -25,9 +25,24 @@ const AllFoods = () => {
     );
   }, [searchTerm]);
   useEffect(() => {
+    if (filter === "defualt") {
+      setAllProducts(
+        allProducts.sort((a, b) => {
+          const nameA = a.id;
+          const nameB = b.id;
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          return 0;
+        })
+      );
+    }
     if (filter === "ascending") {
       setAllProducts(
-        products.sort((a, b) => {
+        allProducts.sort((a, b) => {
           const nameA = a.title.toUpperCase();
           const nameB = b.title.toUpperCase();
           if (nameA < nameB) {
@@ -42,7 +57,7 @@ const AllFoods = () => {
     }
     if (filter === "descending") {
       setAllProducts(
-        products.sort((a, b) => {
+        allProducts.sort((a, b) => {
           const nameA = a.title.toUpperCase();
           const nameB = b.title.toUpperCase();
           if (nameA > nameB) {
@@ -55,7 +70,13 @@ const AllFoods = () => {
         })
       );
     }
-  }, [filter]);
+    if (filter === "high-price") {
+      setAllProducts(allProducts.sort((a, b) => b.price - a.price));
+    }
+    if (filter === "low-price") {
+      setAllProducts(allProducts.sort((a, b) => a.price - b.price));
+    }
+  }, [filter, allProducts]);
   useEffect(() => {
     const displayPage = allProducts.slice(
       visitedPage,
