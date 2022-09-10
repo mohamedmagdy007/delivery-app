@@ -14,27 +14,27 @@
 .logo h5 {
   font-weight: 600;
   font-size: 1rem;
-  color: #212245;
+  color: var(--fontColor2);
   margin-top: -40px;
   margin-bottom: 0;
 }
 .menu a {
   font-weight: 600;
   font-size: 1rem;
-  color: #212245;
+  color: var(--fontColor2);
   transition: all 0.3s;
 }
 .menu a:hover {
-  color: #df2020;
+  color: var(--mainColor);
 }
 .active__menu {
-  color: #df2020 !important;
+  color: var(--mainColor) !important;
 }
 .cart__icon i,
 .user i,
 .mobile__menu i {
   font-size: 1.3rem;
-  color: #212245;
+  color: var(--fontColor2);
   cursor: pointer;
 }
 .cart__icon {
@@ -44,7 +44,7 @@
   position: absolute;
   top: 26px;
   right: -11px;
-  background: #df2020;
+  background: var(--mainColor);
   color: #fff;
   width: 18px;
   height: 18px;
@@ -67,7 +67,7 @@
   left: 0;
   background: #fff;
   z-index: 9999;
-  box-shadow: 5px 5px 15px -5px #fde4e4;
+  box-shadow: 5px 5px 15px -5px var(--borderColor);
 }
 @media only screen and (max-width: 992px) {
   .logo img {

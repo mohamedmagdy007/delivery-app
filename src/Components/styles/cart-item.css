@@ -13,10 +13,10 @@
 .cart__product-price span {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #df2020;
+  color: var(--mainColor);
 }
 .increase__decrease-btn {
-  background: #fde4e4;
+  background: var(--borderColor);
   padding: 2px 5px;
   border-radius: 5px;
   display: inline-flex;
@@ -34,5 +34,5 @@
 }
 .cart__item {
   padding-bottom: 10px;
-  border-bottom: 1px solid #fde4e4 !important;
+  border-bottom: 1px solid var(--borderColor) !important;
 }

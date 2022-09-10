@@ -11,24 +11,24 @@ const Contact = () => {
         <Container>
           <Row>
             <Col lg="6" md="12">
-              <form class="form w-100">
+              <form className="form w-100">
                 <Row>
-                  <div class="form__group  col-md-6">
+                  <div className="form__group  col-md-6">
                     <input type="text" placeholder="Enter your name" required />
                   </div>
-                  <div class="form__group col-md-6">
+                  <div className="form__group col-md-6">
                     <input type="text" placeholder="Subject" required="" />
                   </div>
                 </Row>
                 <Row>
-                  <div class="form__group col-md-6">
+                  <div className="form__group col-md-6">
                     <input
                       type="text"
                       placeholder="Enter your email"
                       required
                     />
                   </div>
-                  <div class="form__group col-md-6">
+                  <div className="form__group col-md-6">
                     <input
                       type="text"
                       placeholder="Enter your phone"
@@ -36,7 +36,7 @@ const Contact = () => {
                     />
                   </div>
                 </Row>
-                <div class="form__group">
+                <div className="form__group">
                   <textarea
                     type="text"
                     rows="5"
@@ -44,12 +44,12 @@ const Contact = () => {
                     required
                   ></textarea>
                 </div>
-                <button type="submit" class="addToCart__btn">
+                <button type="submit" className="addToCart__btn">
                   Submit
                 </button>
               </form>
             </Col>
-            <Col lg="6" md="12">
+            <Col lg="6" md="12" className="mt-3 mt-lg-0">
                   <iframe
                     style={{
                       position: "relative",
@@ -62,13 +62,8 @@ const Contact = () => {
                     }}
                     id="gmap_canvas"
                     src="https://maps.google.com/maps?q=Alexandria&t=&z=11&ie=UTF8&iwloc=&output=embed"
-                    frameborder="0"
                     scrolling="no"
-                    marginheight="0"
-                    marginwidth="0"
                   ></iframe>
-              
-               
             </Col>
           </Row>
         </Container>

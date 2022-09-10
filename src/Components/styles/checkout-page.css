@@ -1,5 +1,5 @@
 .checkout__bill {
-  background: #fde4e4;
+  background: var(--borderColor);
   padding: 30px;
 }
 .checkout__bill h6,

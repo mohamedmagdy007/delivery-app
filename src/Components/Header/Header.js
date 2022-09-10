@@ -6,7 +6,8 @@ import "../styles/header.css";
 import { useSelector, useDispatch } from "react-redux";
 import { cartUiActions } from "../../store/shopping-cart/cartUiSlice";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import "react-lazy-load-image-component/src/effects/blur.css";
+import { useState } from "react";
 const Nav__links = [
   {
     display: "Home",

@@ -11,7 +11,7 @@
 }
 .paginationBttns a {
   padding: 5px 13px;
-  background-color: #df2020;
+  background-color: var(--mainColor);
   color: #fff !important;
   border-radius: 5px;
   display: flex;

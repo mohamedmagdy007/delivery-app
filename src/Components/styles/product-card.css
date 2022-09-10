@@ -1,5 +1,5 @@
 .product__item {
-  border: 1px solid #fde4e4;
+  border: 1px solid var(--borderColor);
   text-align: center;
   padding: 20px 15px;
   cursor: pointer;
@@ -16,7 +16,7 @@
   transform: scale(1.2);
 }
 .product__content h5 a {
-  color: #212245;
+  color: var(--fontColor2);
   font-size: 0.9rem;
 }
 .product__content h5 {
@@ -25,12 +25,12 @@
 .product__price {
   font-weight: 600;
   font-size: 1.2rem;
-  color: #df2020;
+  color: var(--mainColor);
 }
 .addToCart__btn {
   border: none;
   padding: 10px 25px;
-  background: #df2020;
+  background: var(--mainColor);
   color: #fff;
   border-radius: 5px;
   font-size: 0.9rem;
