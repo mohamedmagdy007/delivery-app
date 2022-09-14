@@ -1,25 +1,82 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import AllFoods from '../Pages/AllFoods';
-import Cart from '../Pages/Cart';
-import Checkout from '../Pages/Checkout';
-import Contact from '../Pages/Contact';
-import FoodDetails from '../Pages/FoodDetails';
-import Home from '../Pages/Home';
-import Login from '../Pages/Login';
-import Register from '../Pages/Register';
+import React, { Suspense, lazy } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Loading from "../Components/Loading/Loading";
+const LazyAllFoods = lazy(() => import("../Pages/AllFoods"));
+const LazyCart = lazy(() => import("../Pages/Cart"));
+const LazyCheckout = lazy(() => import("../Pages/Checkout"));
+const LazyContact = lazy(() => import("../Pages/Contact"));
+const LazyFoodDetails = lazy(() => import("../Pages/FoodDetails"));
+const LazyHome = lazy(() => import("../Pages/Home"));
+const LazyLogin = lazy(() => import("../Pages/Login"));
+const LazyRegister = lazy(() => import("../Pages/Register"));
 const PagesRouters = () => {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/home" />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/foods" element={<AllFoods />} />
-      <Route path="/foods/:id" element={<FoodDetails />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/checkout" element={<Checkout />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/resgister" element={<Register />} />
+      <Route
+        path="/home"
+        element={
+          <Suspense fallback={<Loading />}>
+            <LazyHome />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/foods"
+        element={
+          <Suspense fallback={<Loading />}>
+            <LazyAllFoods />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/foods/:id"
+        element={
+          <Suspense fallback={<Loading />}>
+            <LazyFoodDetails />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/cart"
+        element={
+          <Suspense fallback={<Loading />}>
+            <LazyCart />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/checkout"
+        element={
+          <Suspense fallback={<Loading />}>
+            <LazyCheckout />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/contact"
+        element={
+          <Suspense fallback={<Loading />}>
+            <LazyContact />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <Suspense fallback={<Loading />}>
+            <LazyLogin />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/resgister"
+        element={
+          <Suspense fallback={<Loading />}>
+            <LazyRegister />
+          </Suspense>
+        }
+      />
     </Routes>
   );
 };

@@ -3,6 +3,7 @@ import React from "react";
 import Helmet from "../Components/Helmet/Helmet";
 import { CommonSection } from "../Components/UI/common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
+import "../Components/styles/product-details.css";
 const Contact = () => {
   return (
     <Helmet title="Contact">

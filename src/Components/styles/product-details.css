@@ -20,7 +20,7 @@
 .category span {
   padding: 5px 10px;
   background-color: var(--borderColor);
-  color:  var(--fontColor2);
+  color: var(--fontColor2);
   border-radius: 5px;
 }
 .tabs {
@@ -68,13 +68,21 @@
 }
 .user__name {
   font-weight: 600;
-  color:  var(--fontColor2);
+  color: var(--fontColor2);
 }
 .user__email {
   font-style: 0.8rem;
 }
 .feedback__text {
   color: #212245b6;
+}
+.addToCart__btn {
+  border: none;
+  padding: 10px 25px;
+  background: var(--mainColor);
+  color: #fff;
+  border-radius: 5px;
+  font-size: 0.9rem;
 }
 @media only screen and (max-width: 767.9px) {
   .product__image {
