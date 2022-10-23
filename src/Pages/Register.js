@@ -3,6 +3,7 @@ import Helmet from "../Components/Helmet/Helmet";
 import { CommonSection } from "../Components/UI/common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
+import "../Components/styles/register.css"
 const Register = () => {
   const nameRef = useRef();
   const emailRef = useRef();
@@ -16,7 +17,7 @@ const Register = () => {
       <section>
         <Container>
           <Row>
-            <Col lg={8} md={8} sm="12" className="m-auto text-center">
+            <Col lg={6} md={6} sm="12" className="m-auto text-center">
               <form className="form mb-5" onSubmit={submitHandler}>
                 <div className="form__group">
                   <input
